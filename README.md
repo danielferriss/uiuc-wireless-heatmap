@@ -15,7 +15,7 @@ The weight of the heatmap points can either be scaled building by building, whic
 
 The difference between these options is that when scaled by building every point will cycle through a weight from its minimum value to 1. In other words, every building will change color from transparent to bright red every day, with bright red being its busiest time.
 
-### Prerequisites
+## Prerequisites
 
 Packages required:
 * urllib.request
@@ -23,12 +23,12 @@ Packages required:
 * math
 * folium
 
-### Usage
+## Usage
 To get a still heatmap of the most recent data use most_recent.ipynb
 To get an animated heatmap of a certain day use day_data.ipynb and change the date to whatever you would like to get data for.
 
-### Examples
-Examples for the wednesday before our cold day, the cold day, adn the wednesday after can be found in the examples folder. There is a version for both ways of scaling weights.
+## Examples
+Examples for the wednesday before our cold day, the cold day, and the wednesday after can be found in the examples folder. There is a version for both ways of scaling weights.
 PLEASE NOTE: When running the exmaples in browser you must disable any adblocker or HTML5 video blocker as they will not allow the animation to run.
 
 ## Built With
