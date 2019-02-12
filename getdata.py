@@ -81,7 +81,7 @@ def get_most_recent(scale_by_overall_max = True):
 	request = urllib.request.urlopen(url)
 	data = json.load(request)
 	data = parse_data(data, date='today')
-	return([normalize_data(data[0], data[2])])
+	return([normalize_data(data[0], data[2], data[3], scale_by_overall_max=scale_by_overall_max)])
 
 # date is day date. scale by overall max is true if you want the weight of points to be scaled by the max 
 def get_day_data(date, scale_by_overall_max=True):
