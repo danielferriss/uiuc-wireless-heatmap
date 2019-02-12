@@ -1,11 +1,44 @@
-# uiuc-wireless-heatmap
+# Uiuc Wireless Heatmap
 
-The python file in this repository contains functions to get data and form it into the correct input style for heatmaps.
-You can see how to create a heatmap of the most recent data by running most_recent.ipynb
-You can see how to create an animated heatmaps of a day's worth of data by running day_data.ipynb
+This project gets wireless data connections for university properties from their api and makes a heatmap showing this data.
 
-There are animated heatmap examples in the examples folder. There are two heatmaps for each example day.
-The one that has max-scale in its name scales the weight of each point by the highest number of connected devices in a day. The other file scales each building by its own highest device count. This means that the max scale buildings may not show much of an effect throughout the day if they are insignificant in comparison to the more used buildings, while for the non-max-scaled map each building will go from a weight of 0 to a weight of 1 every day.
+Example Image:
+![StillHeatmap](https://github.com/danielferriss/uiuc-wireless-heatmap/blob/master/examples/recentmap.png)
 
-##########IMPORTANT NOTE ##########
-When running the example animated heatmaps in browser you MUST disable adblock and and html5 video blockers. Otherwise the heatmap will not display!
+You can get animated heatmaps of a day as well.
+
+![HeatmapBuildingScale](https://github.com/danielferriss/uiuc-wireless-heatmap/blob/master/examples/2019-01-23.gif)
+
+The weight of the heatmap points can either be scaled building by building, which is showed in the previous video, or by the maximum number of connected devices on campus, shown here:
+
+![HeatmapMaxScale](https://github.com/danielferriss/uiuc-wireless-heatmap/blob/master/examples/2019-01-23-max-scale.gif)
+
+The difference between these options is that when scaled by building every point will cycle through a weight from its minimum value to 1. In other words, every building will change color from transparent to bright red every day, with bright red being its busiest time.
+
+### Prerequisites
+
+Packages required:
+* urllib.request
+* json
+* math
+* folium
+
+### Usage
+To get a still heatmap of the most recent data use most_recent.ipynb
+To get an animated heatmap of a certain day use day_data.ipynb and change the date to whatever you would like to get data for.
+
+### Examples
+Examples for the wednesday before our cold day, the cold day, adn the wednesday after can be found in the examples folder. There is a version for both ways of scaling weights.
+PLEASE NOTE: When running the exmaples in browser you must disable any adblocker or HTML5 video blocker as they will not allow the animation to run.
+
+## Built With
+
+* [urllib](https://docs.python.org/3/library/urllib.request.html) - Used to grab data from api endpoint
+* [json](https://docs.python.org/3/library/json.html) - Used to parse json data
+* [folium](https://python-visualization.github.io/folium/) - Used to generate heatmaps
+
+
+
+## Author
+
+* **Daniel Ferriss** - [website](https://danielferriss.com)
