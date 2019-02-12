@@ -24,6 +24,8 @@ def parse_data(raw_json, date):
 					building_name = building_data[0]['buildingName']
 					#we only extract the device data if we have the building's lat and long
 					if building_name in latlong.keys():
+						latitude = float(latlong[building_name][0])
+						longitude = float(latlong[building_name][1])
 						building_devices = float(building_data[0]['numberOfDevices'])
 						if building_name in building_max_devices.keys():
 							if building_max_devices[building_name] < building_devices:
@@ -34,13 +36,14 @@ def parse_data(raw_json, date):
 						if building_devices > max_devices[0]:
 							max_devices = [building_devices, building_name]
 
-						# building_prev_devices[building_name] = building_devices
-						points.append([building_name, float(latlong[building_name][0]), float(latlong[building_name][1]), building_devices])
+						points.append([building_name, latitude, longitude, building_devices])
 
 			data.append(points)
 
 	return(data, timestamp, max_devices, building_max_devices)
 
+#this will normalize all weights to be between 0 and 1, as that is what folium likes
+#scale by overall max is talked about in the readme and there are several examples of what effect it has
 def normalize_data(data, max_devices, building_max_devices, scale_by_overall_max):
 	heatmap = []
 	for i in range(len(data)):
@@ -60,7 +63,7 @@ def normalize_data(data, max_devices, building_max_devices, scale_by_overall_max
 		heatmap.append(points)
 	return(heatmap)
 
-
+#folium is incapable of displaying very large sets of data so I am only displaying every half hour
 def sparse_data(parsed_data, parsed_data2, normalized_data, normalized_data2):
 	sparsed_data = []
 	sparsed_data2 = []
