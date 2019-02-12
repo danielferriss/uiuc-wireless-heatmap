@@ -2,7 +2,7 @@
 
 This project gets wireless data connections for university properties from their api and makes a heatmap showing this data.
 
-Example Image:
+Example image of most recent data:
 ![StillHeatmap](https://github.com/danielferriss/uiuc-wireless-heatmap/blob/master/examples/recentmap.png)
 
 You can get animated heatmaps of a day as well.
